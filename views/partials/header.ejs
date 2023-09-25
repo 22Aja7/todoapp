@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>
+document
+</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<nav>
+<ul>
+<li id="logo_head">TodoApp</li>
+<li><a onclick="location.reload()" style="cursor:pointer;">home</a></li>
+<%if(!user){%>
+<li><a href="/todo/login">login</a></li>
+<li><a href="/todo/register">register</a></li>
+
+<%}else{%>
+<li style="float:right;"><a href="/todo/signout" style="color:white;text-decoration:none;">logOut</a></li>
+<%}%>
+</ul>
+
+</nav>
+<%= success %>
+<%= error %>

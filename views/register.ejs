@@ -1,0 +1,15 @@
+<%- include("./partials/header.ejs") %>
+<h1 id="web_head">Todo App</h1>
+
+<form  method="post" id="register_form">
+<label for="todouser[name]">name : </label>
+<input type="text" name="todouser[name]">
+<label for="todouser[username]">username :</label>
+<input type="text" name="todouser[username]">
+<label for="todouser[pwd]">password : </label>
+<input type="password" name="todouser[pwd]">
+<input type="submit" value="register">
+</form>
+<p>already registered?<a href="/todo/login"> login</a></p>
+</body>
+<%- include("./partials/footer.ejs") %>

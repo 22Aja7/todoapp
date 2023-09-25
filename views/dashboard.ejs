@@ -1,0 +1,53 @@
+<%- include("./partials/header") %>
+
+	<div style="width:80%;margin:auto;">
+		<h1>welcome <%= username %>
+		</h1>
+		<div class="todo_container">
+			<div class="todos">
+				<ul id="dash">
+					<%
+						if(finduser.todos){
+						for(let x of finduser.todos) {%>
+
+						<div style="background-color:red;padding:5px 10px;margin-top:10px;">
+							<div class="todo_items">
+								<div class="tname">
+									<%= x.task%>
+								</div>
+								<div class="tdate">
+									<%=x.targetDate.toDateString()%>
+								</div>
+								<div class="todoedit">
+									<form action="/todo/<%=finduser._id%>/<%= x.id %>/delete?_method=delete" method="post">
+									<input type="submit" value="delete">
+								</form>
+							</div>
+							</div>
+							<p>
+								<% var d=x.targetDate.getDate() - new Date().getDate(); var comment; if(d<0) {
+									comment="targetdate gone!!" ; } else { comment=d + "days left" ; } %>
+									<%= comment %>
+							</p>
+						</div>
+
+						<%}}%>
+
+				</ul>
+			</div>
+
+			<div class="todo_form">
+				<form action="/todo/<%=finduser._id%>/new?_method=put" method="post" class="todo_form_box"
+					autocomplete="off">
+					<label>task</label>
+					<input type="text" name="todouser[todos][task]" required>
+					<label>targetdate</label>
+					<input type="date" name="todouser[todos][targetDate]" required>
+					<input type="submit" value="add new todo">
+				</form>
+			</div>
+
+		</div>
+	</div>
+	</body>
+	<%- include("./partials/footer") %>
